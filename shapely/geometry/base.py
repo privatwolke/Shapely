@@ -231,8 +231,9 @@ class BaseGeometry(object):
         self.__geom__ = val
 
     def __del__(self):
-        self.empty(val=None)
-        self.__p__ = None
+        if self:
+            self.empty(val=None)
+            self.__p__ = None
 
     def __str__(self):
         return self.wkt
